@@ -1,0 +1,26 @@
+version: "2"
+services:
+  golang:
+    build:
+      context: .
+      args:
+        USER: spt
+        UID: 1000
+    image: spt-core
+    volumes:
+      - ./go:/go
+    command: sh ./start.sh
+    env_file:
+      - .env
+    ports:
+      - 2345:2345 # Ports using for debuging with dlv
+    networks:
+      sheypro_net:
+        ipv4_address: 172.28.0.2
+
+networks:
+  sheypro_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/24
