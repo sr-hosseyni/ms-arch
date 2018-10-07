@@ -4,5 +4,6 @@ go/bin/*
 !go/bin
 go/src/app/vendor/*
 !go/src/app/vendor
+.idea/
 
 **/debug

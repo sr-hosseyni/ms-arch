@@ -4,9 +4,9 @@ services:
     build:
       context: .
       args:
-        USER: spt
+        USER:  sheypro
         UID: 1000
-    image: spt-core
+    image: sheypro-srv-A
     volumes:
       - ./go:/go
     command: sh ./start.sh
