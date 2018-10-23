@@ -1,0 +1,3 @@
+[submodule "services/core"]
+	path = services/core
+	url = git@github.com:sheypoor/sheypro-core.git

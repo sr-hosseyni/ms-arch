@@ -1,0 +1,56 @@
+version: "2"
+services:
+  ms4:
+    image: golang:latest
+    volumes:
+    - ./services/ms4:/go
+    working_dir: /go/src/app
+    command: sh ./start.sh
+    env_file:
+    - ./services/ms4/.env
+    ports:
+    - 8080:8080
+    networks:
+      sheypro_net:
+        ipv4_address: 172.28.0.3
+
+  gnatsd:
+    image: nats:latest
+    ports:
+    - 4222:4222
+    - 8222:8222
+    - 6222:6222
+
+#  ServiceName_test:
+#    image: {{.ServiceName}}
+#    ports:
+#    - "8001:8001"
+#    environment:
+#    - "CONSUL=consul:8500"
+#    links:
+#    - consul:consul
+#    - statsd:statsd
+#
+#  consul:
+#    image: progrium/consul
+#    ports:
+#    - "9400:8400"
+#    - "9500:8500"
+#    - "9600:53/udp"
+#    hostname: node1
+#    command: "-server -bootstrap -ui-dir /ui"
+#
+#  statsd:
+#    image: hopsoft/graphite-statsd
+#    ports:
+#    - "8080:80"
+#    - "2003:2003"
+#    - "8125:8125/udp"
+#    - "8126:8126"
+
+networks:
+  sheypro_net:
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.28.0.0/24

@@ -1,0 +1,19 @@
+{
+  "name": "App Name",
+  "version": "1.0",
+  "server": {
+    "port": 8080
+  },
+  "logger": {
+    "level": "debug/info/warn...",
+    "formatter": "json/text..",
+    "file": "path/to/logfile.log"
+  },
+  "newrelic": {
+    "app": "Your app name",
+    "key": "Your Key"
+  },
+  "sentry": {
+    "dns": "Your Sentry DNS"
+  }
+}

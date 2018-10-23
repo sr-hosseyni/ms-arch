@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+if [ ! -f "devtools/$1.sh" ]; then
+    echo "devtools/$1.sh not found"
+    if [ $# -eq 1 ]
+    then
+        $0 | grep $1
+    else
+        sh devtools/usage.sh $*
+    fi
+    exit 0
+fi
+
+sh "devtools/$1.sh" $*
+
+#
+#case $1 in
+#    "init")
+#    ;;
+#    " ")
+#        echo 'shir'
+#    ;;
+#    *)
+#        if [ $# -eq 1 ]
+#        then
+#            $0 | grep $1
+#        else
+#            sh devtools/usage.sh $*
+#        fi
+#   ;;
+#esac

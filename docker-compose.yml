@@ -1,22 +1,36 @@
 version: "2"
 services:
-  golang:
-    build:
-      context: .
-      args:
-        USER:  sheypro
-        UID: 1000
-    image: sheypro-srv-A
+#  golang:
+#    build:
+#      context: .
+#      args:
+#        USER:  sheypro
+#        UID: 1000
+#    image: sheypro-srv-a
+#    volumes:
+#      - ./go:/go
+#    command: sh ./start.sh
+#    env_file:
+#      - .env
+#    ports:
+#      - 2345:2345 # Ports using for debuging with dlv
+#    networks:
+#      sheypro_net:
+#        ipv4_address: 172.28.0.2
+
+  go-service-based-microservice:
+    image: golang:latest
     volumes:
-      - ./go:/go
+      - ./go-service-based-microservice:/go
+    working_dir: /go/src/app
     command: sh ./start.sh
     env_file:
-      - .env
+      - go-service-based-microservice/.env
     ports:
-      - 2345:2345 # Ports using for debuging with dlv
+      - 8080:8080
     networks:
       sheypro_net:
-        ipv4_address: 172.28.0.2
+        ipv4_address: 172.28.0.3
 
 networks:
   sheypro_net:
