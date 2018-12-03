@@ -1,0 +1,6 @@
+version: '2'
+services:
+  sw-editor:
+    image: swaggerapi/swagger-editor
+    ports:
+    -8080:3000

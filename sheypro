@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
 
-if [ ! -f "devtools/$1.sh" ]; then
-    echo "devtools/$1.sh not found"
-    if [ $# -eq 1 ]
-    then
+
+if [ $# -ge 1 ]; then
+    fullname="${1//://}"
+#    IFS=':' read -a cmd <<< "${1}"
+#    file=${cmd[0]}
+    if [ ! -f "devtools/$fullname.sh" ]; then
+        echo "devtools/$fullname.sh not found"
         $0 | grep $1
+        exit 0
     else
-        sh devtools/usage.sh $*
+        sh "devtools/$1.sh" $0 $*
     fi
-    exit 0
+else
+    sh devtools/--help.sh $0
 fi
 
-sh "devtools/$1.sh" $*
 
 #
 #case $1 in
